@@ -26,6 +26,7 @@ import { Button } from '@repo/ui/components/button';
 import { Textarea } from '@repo/ui/components/textarea';
 
 const formSchema = z.object({
+  fontFamily: z.string(),
   fontSize: z.string(),
   bindings: z.string(),
   tabSize: z.string(),
@@ -55,6 +56,31 @@ export function SettingsForm() {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-4">
+        <FormField
+          control={form.control}
+          name="fontFamily"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Font Family</FormLabel>
+              <Select defaultValue={field.value} onValueChange={field.onChange}>
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select a font family" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  <SelectItem value="default">System Default</SelectItem>
+                  <SelectItem value="JetBrains Mono">JetBrains Mono</SelectItem>
+                  <SelectItem value="Noto Sans Mono">Noto Sans Mono</SelectItem>
+                  <SelectItem value="IBM Plex Mono">IBM Plex Mono</SelectItem>
+                  <SelectItem value="Fira Code">Fira Code</SelectItem>
+                  <SelectItem value="Victor Mono">Victor Mono</SelectItem>
+                </SelectContent>
+              </Select>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
         <FormField
           control={form.control}
           name="fontSize"

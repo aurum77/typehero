@@ -47,6 +47,7 @@ export function CodeEditor({ onChange, onMount, options, value, ...props }: Code
     return {
       ...DEFAULT_OPTIONS,
       ...settings,
+      fontFamily: settings.fontFamily === 'default' ? undefined : settings.fontFamily,
       fontSize: parseInt(settings.fontSize),
       tabSize: parseInt(settings.tabSize),
       ...options,

@@ -2,6 +2,7 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
 export const DEFAULT_SETTINGS = {
+  fontFamily: 'default',
   fontSize: '16',
   bindings: 'standard',
   tabSize: '2',
